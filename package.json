@@ -28,7 +28,8 @@
   "scripts": {
     "prepare": "husky",
     "lint-staged": "lint-staged",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "sonar": "sonar-scanner -Dsonar.token=$SONAR_ARCHCHECK_TOKEN"
   },
   "lint-staged": {
     "src/**/*.ts": [

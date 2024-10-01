@@ -1,0 +1,6 @@
+projectKey=ioasys---archcheck
+serverUrl=https://sonarqube.ioasys.com.br
+serverVersion=10.6.0.92116
+dashboardUrl=https://sonarqube.ioasys.com.br/dashboard?id=ioasys---archcheck
+ceTaskId=49076359-3e58-40b9-b534-72158a3f0bbb
+ceTaskUrl=https://sonarqube.ioasys.com.br/api/ce/task?id=49076359-3e58-40b9-b534-72158a3f0bbb
