@@ -1,0 +1,49 @@
+{
+  "name": "@ioasys/archcheck",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "dist/index.cjs",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "repository": "git@ssh.dev.azure.com:v3/ioasys/Code%20Samples/ioasys-archcheck",
+  "author": "Nelson Sinis <nelsonsinis@ioasys.com.br>",
+  "devDependencies": {
+    "@eslint/js": "^9.11.1",
+    "eslint": "^9.11.1",
+    "globals": "^15.9.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "rollup": "^4.23.0",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "lint-staged": "lint-staged",
+    "build": "rollup -c"
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "eslint --fix .",
+      "prettier --write ."
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    },
+    "commitlint": {
+      "extends": [
+        "@commitlint/config-conventional"
+      ]
+    }
+  }
+}
