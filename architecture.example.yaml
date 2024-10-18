@@ -1,0 +1,93 @@
+version: 1.0
+exclude:
+  - node_modules
+  - '^.*(test|spec)+.*$'
+  - 'tests/*'
+
+layers:
+  - name: controllers
+    canBeAccessedBy:
+      - services
+    required: true
+  - name: services
+    canBeAccessedBy:
+      - controllers
+    required: true
+  - name: repositories
+    canBeAccessedBy:
+      - services
+      - providers
+    required: true
+  - name: providers
+    required: false
+  - name: modules
+    required: true
+  - name: dtos
+    canBeAccessedBy:
+      - controllers
+      - services
+
+structure:
+  - name: src
+    type: folder
+    components:
+      - name: tests
+        type: folder
+        components:
+          - name: unit
+            type: folder
+          - name: integration
+            type: folder
+        pattern: ^.*(test|spec)+.*$
+      - name: app.module.ts
+        type: file
+      - name: main.ts
+        type: file
+      - name: modules
+        type: folder
+        layer: modules
+        components:
+          - name: contexts
+            type: folder
+            components:
+              - name: controller
+                type: file
+                layer: controllers
+                pattern: ^(index\.[t|j]s|.*\.controller\.ts)$
+              - name: service
+                type: file
+                layer: services
+                pattern: ^(index\.[t|j]s|.*\.service\.ts)$
+              - name: dto
+                type: file
+                layer: dtos
+                pattern: ^(index\.[t|j]s|.*\.dto\.ts)$
+      - name: config
+        type: folder
+      - name: shared
+        type: folder
+        components:
+          - name: constants
+            type: folder
+            pattern: ^(index\.[t|j]s|.*\.constant\.ts)$
+          - name: decorators
+            type: folder
+            pattern: ^(index\.[t|j]s|.*\.decorator\.ts)$
+          - name: dtos
+            type: folder
+            pattern: ^(index\.[t|j]s|.*\.dto\.ts)$
+          - name: filters
+            type: folder
+            pattern: ^(index\.[t|j]s|.*\.filter\.ts)$
+          - name: interceptors
+            type: folder
+            pattern: ^(index\.[t|j]s|.*\.interceptor\.ts)$
+          - name: providers
+            type: folder
+            pattern: ^(index\.[t|j]s|.*\.provider\.ts)$
+          - name: modules
+            type: folder
+            pattern: ^(index\.[t|j]s|.*\.module\.ts)$
+            components:
+              - name: <?>
+                type: folder
